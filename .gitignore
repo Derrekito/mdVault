@@ -1,0 +1,5 @@
+py/__pycache__/
+build
+*/pdf/
+mermaid-filter.err
+pdf/
