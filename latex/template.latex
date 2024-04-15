@@ -60,7 +60,7 @@ $endif$
 % \setmonofont{YourFontNameHere}[Scale=MatchLowercase] % Adjust the font name and scaling as needed
 
 % Ensure that sections are numbered starting from 1
-\setcounter{secnumdepth}{1}
+%\setcounter{secnumdepth}{1}
 % Microtype settings
 \SetProtrusion{encoding={*},family={bch},series={*},size={6,7}}{1={ ,750},2={ ,500},3={ ,500},4={ ,500},5={ ,500},6={ ,500},7={ ,600},8={ ,500},9={ ,500},0={ ,500}}
 \SetExtraKerning[unit=space]{encoding={*},family={qhv},series={b},size={normalsize,large,Large}}{1={-200,-200},\textendash={400,400}}
@@ -87,7 +87,7 @@ $endif$
 % Enable or disable section numbering
 $if(secnum)$
 % If section-numbering is true or undefined, sections are numbered (default behavior)
-\setcounter{secnumdepth}{1}
+%\setcounter{secnumdepth}{1}
 $else$
 \setcounter{secnumdepth}{0} % Disables section numbering
 $endif$

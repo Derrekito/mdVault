@@ -1,5 +1,14 @@
-py/__pycache__/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+.DS_Store
+*.tex
+*/.DS_Store
 build
-*/pdf/
-mermaid-filter.err
+.trash
+*/pdf
+*/__pycache__
+*/*/__pycache__
 pdf/
+mermaid-filter.err

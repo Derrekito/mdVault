@@ -2,12 +2,10 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
-
-# Check if the variable was set and if the file exists
-if [ -z "$PUPPETEER_EXECUTABLE_PATH" ] || [ ! -f "$PUPPETEER_EXECUTABLE_PATH" ]; then
-    echo "WARNING: Chromium is not found. Mermaid diagrams will fail."
-fi
+export MERMAID_FILTER_FORMAT="pdf"
+export MERMAID_FILTER_THEME="forest"
+export MERMAID_FILTER_CONFIG="$DIR/.mermaid-config.json"
+export MERMAID_FILTER_MERMAID_CSS="$DIR/.mermaid.css"
 
 template="${DIR}/latex/template.latex"
 toc="$2"
@@ -81,8 +79,8 @@ FILE_BASENAME=$(basename "${IN_FILE}" .md)
 TEX_FILE="${BUILD_DIR}/${FILE_BASENAME}.tex"
 
 # Generate .tex from Markdown
-#PANDOC_CMD="pandoc \"${IN_FILE}\" --from markdown --template=\"${template}\" --filter ./latexa/pandoc-minted --highlight-style=pygments --trace --data-dir=\"${DIR}\""
-PANDOC_CMD="pandoc \"${IN_FILE}\" --from markdown --template=\"${template}\" -F mermaid-filter --filter ./latex/pandoc-minted --highlight-style=pygments --trace --data-dir=\"${DIR}\""
+# pandoc --filter="mermaid-filter" -o output.pdf test.md
+PANDOC_CMD="pandoc \"${IN_FILE}\" --from markdown --template=\"${template}\" --filter=\"mermaid-filter\" --filter=\"./latex/pandoc-minted\" --highlight-style=pygments --trace --data-dir=\"${DIR}\""
 
 # Add --toc option if TOC is requested
 if [ -n "$toc" ]; then

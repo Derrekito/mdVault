@@ -13,15 +13,15 @@ abstract: Some example abstract
 date: 2024-10-28
 ---
 
-# Section 1: Introduction
+# Example Introduction
 
 Welcome to this document. Here you will find basic information about our project.
 
-## Subsection A: Overview
+## Example Overview
 
 This subsection provides an overview of the project's purpose and main features.
 
-# Section 2: Installation
+# Example Installation
 
 Follow these steps to install the software:
 
@@ -30,7 +30,7 @@ sudo apt update
 sudo apt install -y your-software
 ```
 
-# Section 3: Usage
+# Usage
 
 To use the software, start by entering the following command:
 
@@ -47,18 +47,42 @@ your-software --option1
 your-software --option2
 ```
 
-# Section 4: State Machine Diagram
+# Example Diagrams
+
+## State Machine Diagram
 
 Below is an example of a Mermaid diagram representing a simple state machine:
 
-```mermaid
+```mermaid{.mermaid width="50%"}
 stateDiagram-v2
-[*] --> Active: Start
-Active --> Inactive: Deactivate
-Active --> Active: Reactivate
-Inactive --> [*]: End
+[*] --> OK
+
+OK --> OK
+
+OK --> BAD_REGISTER
+BAD_REGISTER --> BAD_CACHE
+
+BAD_REGISTER --> OK
+BAD_CACHE --> BAD_DRAM
+BAD_CACHE --> OK
+BAD_DRAM --> OK
+BAD_DRAM --> [*]
 ```
 
-# Section 5: Conclusion
+## Gantt Diagram
 
-Thank you for using our software. For more information, contact support@example.com.
+```mermaid
+gantt
+    title A Gantt Diagram
+    dateFormat YYYY-MM-DD
+    section Section
+        A task          :a1, 2014-01-01, 30d
+        Another task    :after a1, 20d
+    section Another
+        Task in Another :2014-01-12, 12d
+        another task    :24d
+```
+
+# Conclusion
+
+DONE
