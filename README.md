@@ -117,6 +117,12 @@ Frontmatter in Markdown files is used to specify metadata that can be utilized b
   - Description: The date the document is published or compiled.
   - Example: `date: 2024-10-28`
 
+- **disto**:
+  - Type: String
+  - Description: Distribution statement
+  - Example: `distro: Propietary Information Only. Not For Public Release.`
+
+
 ## Frontmatter Usage
 
 To use these fields, include them at the top of your Markdown file enclosed in triple dashes. Here is an example of how frontmatter might look in your Markdown file:

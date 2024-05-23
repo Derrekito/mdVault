@@ -33,6 +33,7 @@
 %\usepackage[zerostyle=b,scaled=.75]{newtxtt}
 \usepackage{tgcursor}
 %\usepackage{newtxtt}
+
 $if(bib)$
 \usepackage[backend=biber,style=ieee,sorting=none,labeldateparts,maxbibnames=99,maxcitenames=2,mincitenames=1]{biblatex}
 \addbibresource{latex/bibliography.bib}
@@ -90,6 +91,16 @@ $if(secnum)$
 %\setcounter{secnumdepth}{1}
 $else$
 \setcounter{secnumdepth}{0} % Disables section numbering
+$endif$
+
+$if(distro)$
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Clear default headers and footers
+\rfoot{\\$distro$} % Adds your statement to the right side of the footer
+\cfoot{\thepage} % Optionally, keep the page number centered in the footer
+\renewcommand{\headrulewidth}{0pt} % Optional: removes the header rule
+\renewcommand{\footrulewidth}{0pt} % Optional: adds a footer rule
 $endif$
 
 \begin{document}
