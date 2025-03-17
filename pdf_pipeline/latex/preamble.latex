@@ -1,0 +1,86 @@
+% Core packages and Pandoc-specific patches
+\usepackage[letterpaper, top=0.5in, bottom=1in, left=1in, right=1in, includeheadfoot]{geometry}
+\usepackage{caption} % Add caption package
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[
+  babel=false, % Enable language-specific kerning. Take language settings from the language of the current document (see Section 6 of microtype.pdf)
+  expansion=alltext,
+  protrusion=alltext-nott, % Ensure that at listings, there is no change at the margin of the listing
+  final % Always enable microtype, even if in draft mode. This helps find bad boxes quickly.
+        % In the standard configuration, this template is always in the final mode, so this option only makes a difference if "pros" use the draft mode
+]{microtype}
+\usepackage{setspace}
+\usepackage{pstricks}
+\usepackage{import}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{physics}
+\usepackage{url}
+\usepackage{xurl} % improves breaking URLs across lines
+\urlstyle{same} % Uses the same font as the surrounding text for URLs
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{fontspec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{titling}
+\usepackage{fancyhdr, lastpage}
+\usepackage[base]{babel}
+\usepackage{lipsum} % Just for dummy text
+\usepackage{tocloft} % adjust TOC spacing
+\usepackage[flushleft]{threeparttable}
+\usepackage{multicol, multirow}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{color,soul}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{tikz}
+\usepackage{minted}
+% change the following to remove TOC from TOC
+%\usepackage[nottoc,numbib]{tocbibind} % The 'nottoc' option prevents the TOC from being included in itself
+\usepackage[numbib]{tocbibind} % This will include the TOC in the TOC
+
+\usepackage{bookmark}
+
+% Header/Footer setup to fit within 1in margins
+\pagestyle{fancy}
+\fancyhf{} % Clear default content
+\fancyfoot[C]{\thepage} % Page number in footer
+\setlength{\headheight}{0.17in} % Header height (0.17in)
+\setlength{\headsep}{0.33in}  % Space between header and body (0.33in)
+\setlength{\footskip}{0.5in}  % Space between body and footer (0.5in)
+% Top: 0.17in + 0.33in = 0.5in (leaves 0.5in for body)
+% Bottom: 0.5in (leaves 0.5in for body)
+
+
+% Pandoc image scaling patch
+% patch for \pandocbounded not found
+$if(graphics)$
+\makeatletter
+\newsavebox\pandoc@box%
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}%
+% Set default figure placement to htbp
+\def\fps@figure{htbp}%
+\makeatother%
+$endif$
+
+$if(bib)$
+\usepackage[backend=biber,style=ieee,sorting=none,labeldateparts,maxbibnames=999,maxcitenames=2,mincitenames=1]{biblatex}
+\addbibresource{content/references/bibliography.bib}
+$endif$

@@ -1,0 +1,67 @@
+\usepackage{minted}
+\usemintedstyle{tango}
+
+% Define the background color
+\definecolor{codebg}{rgb}{0.95,0.95,0.92} % Light grey color
+
+% Configure minted
+\setminted{%
+    fontsize=\footnotesize,
+    linenos=true,
+    breaklines=true,
+    numbersep=10pt
+}
+% Use the custom font for all minted environments
+\fvset{formatcom=\codefont}
+
+%set minted lineno size
+\renewcommand{\theFancyVerbLine}{\scriptsize\arabic{FancyVerbLine}}
+
+\usepackage[most, minted]{tcolorbox}
+
+\newtcblisting{myminted}[2][]{%
+    boxsep=2pt,
+    left=8mm,
+    listing engine=minted,
+    minted language=#2,
+    listing only,
+    breakable,
+    enhanced,
+    minted options = {%
+        linenos,
+        breaklines=true,
+        breakbefore=.,
+        fontsize=\footnotesize,
+        numbersep=2mm
+    },
+    overlay = {%
+        \begin{tcbclipinterior}
+            \fill[gray!25] (interior.north west) rectangle ([xshift=8mm]interior.south west);
+        \end{tcbclipinterior}
+    },
+    #1
+}
+
+% Custom inputminted command for file inclusions, with optional attributes
+\NewDocumentCommand{\myinputminted}{O{} m m}{% #1 = optional attributes, #2 = language, #3 = file
+    \begin{tcolorbox}[%
+        boxsep=2pt,
+        left=8mm,
+        breakable,
+        enhanced,
+        overlay = {%
+            \begin{tcbclipinterior}
+                \fill[gray!25] (interior.north west) rectangle ([xshift=8mm]interior.south west);
+            \end{tcbclipinterior}
+        },
+        #1 % Apply optional attributes to tcolorbox
+    ]
+    \inputminted[%
+        linenos,
+        breaklines=true,
+        breakbefore=.,
+        fontsize=\footnotesize,
+        numbersep=2mm%
+    ]{#2}{#3}
+    \end{tcolorbox}
+}

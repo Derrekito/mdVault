@@ -1,0 +1,113 @@
+% Font configuration for LuaLaTeX
+\usepackage{fontspec} % Custom fonts
+\setmainfont[
+  Ligatures=TeX,
+  SmallCapsFont={TeX Gyre Termes},
+  SmallCapsFeatures={Letters=SmallCaps},
+]{TeX Gyre Termes} % Main text font
+
+\setmonofont{TeX Gyre Cursor} % inline Code font
+
+\newfontfamily{\codefont}{FiraCode}[
+    %Path            = ./pdf_pipeline/assets/Fonts/,
+    %Path            = ../pdf_pipeline/assets/Fonts/,
+    Extension       = .ttf,
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    %ItalicFont      = *-Italic,
+    %BoldItalicFont  = *-BoldItalic
+]
+
+% change filename to "microtypeSettings.tex"
+% http://www.khirevich.com/latex/microtype/
+%\microtypecontext{spacing=nofrench}
+%
+%
+%\usepackage[activate={true,nocompatibility},final,kerning=true,factor=1100,stretch=10,shrink=10,spacing=true, %]{microtype}%,
+%            tracking=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+% activate={true,nocompatibility} - activate protrusion and expansion
+% final - enable microtype; use "draft" to disable
+% tracking=true, kerning=true, spacing=true - activate these techniques
+% factor=1100 - add 10% to the protrusion amount (default is 1000)
+% stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
+%
+%
+%bch
+\SetProtrusion{%
+    encoding={*},
+    family={ptm},
+    series={*},
+    size={6,7}%
+}{%
+    1={ ,750},
+    2={ ,500},
+    3={ ,500},
+    4={ ,500},
+    5={ ,500},
+    6={ ,500},
+    7={ ,600},
+    8={ ,500},
+    9={ ,500},
+    0={ ,500}% allows superscript protrusion
+}
+%
+\SetExtraKerning[unit=space]{%
+    encoding={*},
+    family={ntx},
+    series={*},
+    size={%
+        footnotesize,
+        small,
+        normalsize,
+        tiny,
+        Large,
+        Huge,
+        large%
+    }%
+}{%
+    \textendash={400,400},          % en-dash, add more space around it
+    "28={ ,150},                    % left bracket, add space from right
+    "29={150, },                    % right bracket, add space from left
+    \textquotedblleft={ ,150},      % left quotation mark, space from right
+    \textquotedblright={150, }      % right quotation mark, space from left
+}
+%
+%\pretolerance=1100
+%\tolerance=2000
+\emergencystretch=9pt
+%\emergencystretch=10pt
+\interlinepenalty=100
+\hyphenpenalty=9999 % do not tolerate hyphenation
+%\sloppy
+%\doublehyphendemerits=10000
+
+\microtypecontext{spacing=nonfrench}
+
+\microtypesetup{%
+    activate={true, nocompatibility},
+    protrusion=true,
+    tracking=false,
+    kerning=false,
+    spacing=false, % doesn't work with nonfrench
+    stretch=0,
+    shrink=0,
+    factor=1100,
+    %tracking=smallcaps,
+    verbose=errors,
+    expansion=false
+}
+
+
+\SetTracking{%
+    encoding={*},
+    shape={*}
+}{1000}
+\SetTracking{%
+    encoding=T1,
+    shape=sc
+    }{0}
+
+\SetTracking{%
+}{}
+
+%\microtypecontext{spacing=nonfrench}

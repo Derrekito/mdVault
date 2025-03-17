@@ -3,7 +3,6 @@
 *.fls
 *.log
 .DS_Store
-*.tex
 */.DS_Store
 build
 .trash
@@ -12,3 +11,6 @@ build
 */*/__pycache__
 pdf/
 mermaid-filter.err
+.obsidian/workspace.json
+venv
+node_modules

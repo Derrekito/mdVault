@@ -1,0 +1,38 @@
+% Title page layout (included in main template under if(title))
+\begin{titlepage}
+  \centering
+  \vspace*{1cm} % Top padding
+  {\Huge $title$}\par % Main title
+  $if(subtitle)$ % Optional subtitle
+    \vspace{1.5cm}
+    {\Large $subtitle$}\par
+  $endif$
+  $if(author)$ % Author with email
+    \vspace{2cm}
+    {\Large $author$$if(email)$\\ {\small\href{$email$}{$email$}} $endif$}\par
+  $endif$
+  \vfill % Flexible spacing
+  $if(disclaimer)$ % Disclaimer
+    \centering
+    \vspace*{3cm}
+    $disclaimer$
+  $endif$
+  $if(logo)$ % Government logos
+    \centering
+    \includegraphics[width=0.17\textwidth]{logo.png}
+  $endif$
+  $if(distro)$ % Distribution notice
+    $if(unmlogo)$
+    % No extra space if logo present
+    $else$
+      \vfill
+    $endif$
+    {$distro$}\par
+  $endif$
+  $if(rev)$ % Revision info
+    \vspace{1cm}
+    \begin{center}
+      \textbf{Rev. $rev$}
+    \end{center}
+  $endif$
+\end{titlepage}

@@ -1,10 +1,1 @@
-{
-  "theme": "default",
-  "themeVariables": {
-    "nodeBorder" : "#004990",
-    "mainBkg" : "#c9d7e4",
-    "nodeTextColor" : "#274059",
-    "fontFamily": "arial",
-    "fontSize": "18px"
- }
-}
+/home/derrekito/Projects/example_vault/pdf_pipeline/scripts/../config/mermaid-config.json

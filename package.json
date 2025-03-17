@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "chromium": "^3.0.3",
+    "mermaid-filter": "1.4.7",
+    "puppeteer": "^22.6.4"
+  }
+}

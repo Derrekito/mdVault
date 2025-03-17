@@ -1,0 +1,80 @@
+% Formatting styles: sections, spacing, headers/footers
+\usepackage{titling} % Title page tweaks
+
+% Title page spacing
+\renewcommand\maketitlehooka{\vspace{180pt}} % Space before title
+\renewcommand\maketitlehookd{\vfill} % Space after content
+
+% Section heading style: bold, large, numbered, underlined
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[\titlerule]
+
+% Set TOC hierarchy level
+% -1 for part
+% 0 for chapter
+% 1 for section
+% 2 for subsection
+% 3 for subsubsection
+% 4 for paragraph
+% 5 for subparagraph
+\setcounter{tocdepth}{2}
+\renewcommand{\contentsname}{Table of Contents}
+
+% Spacing options (Pandoc conditional)
+$if(tight)$
+\setlength{\parskip}{0pt}
+\setlist{%
+  topsep=6pt,       % Space above the list
+  partopsep=0pt,     % Extra space at the top if it's a new paragraph
+  itemsep=6pt,       % Space between items
+}
+
+% Reducing space before and after section titles
+\titlespacing*{\section}
+{0pt} % Left margin, change if needed
+{6pt} % Space before the section
+{6pt} % Space after the section
+
+% You can do similarly for subsections, subsubsections, etc.
+\titlespacing*{\subsection}
+{0pt} % Left margin
+{5pt} % Space before the subsection
+{5pt} % Space after the subsection
+
+$else$
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+$endif$
+
+% Tight list fallback
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}}
+
+% Image scaling defaults
+\setkeys{Gin}{width=\linewidth,height=\textheight,keepaspectratio}
+
+% Figure caption size
+\captionsetup[figure]{font=footnotesize}
+
+% Header/footer setup
+\pagestyle{fancy}
+\fancyhf{} % Clear defaults
+\renewcommand{\footrulewidth}{0.4pt} % Footer rule
+\renewcommand{\headrulewidth}{0pt} % No header line
+
+$if(distro)$
+\rfoot{\scriptsize $distro$} % Distribution notice
+$else$
+\renewcommand{\footrulewidth}{0pt} % No footer rule if no distro
+$endif$
+\fancyfoot[C]{\break\thepage} % Page number (fix \break?)
+
+% Section numbering toggle (Pandoc conditional)
+$if(secnum)$
+$else$
+\setcounter{secnumdepth}{0} % Disable numbering
+$endif$
+
+% PDF metadata (Pandoc variables)
+\hypersetup{%
+  colorlinks=false,
+  pdftitle={$if(title)$ $title${ }$endif$ $if(author)$by $author$ $endif$}
+}
