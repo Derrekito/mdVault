@@ -1,5 +1,8 @@
+# Find all Markdown files
 MD_FILES := $(shell find content -name '*.md' ! -path '*/Excalidraw/*')
+# Define PDF file paths based on MD_FILES
 PDF_FILES := $(patsubst %.md, %_pdf, $(MD_FILES))
+
 
 all: check-deps ensure_pdf_dirs convert_md_to_pdf
 

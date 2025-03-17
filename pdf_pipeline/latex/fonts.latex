@@ -9,7 +9,6 @@
 \setmonofont{TeX Gyre Cursor} % inline Code font
 
 \newfontfamily{\codefont}{FiraCode}[
-    %Path            = ./pdf_pipeline/assets/Fonts/,
     %Path            = ../pdf_pipeline/assets/Fonts/,
     Extension       = .ttf,
     UprightFont     = *-Regular,

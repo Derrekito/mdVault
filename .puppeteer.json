@@ -1,3 +1,1 @@
-{
-  "args": ["--no-sandbox", "--font-render-hinting=none"]
-}
+pdf_pipeline/config/puppeteer.json

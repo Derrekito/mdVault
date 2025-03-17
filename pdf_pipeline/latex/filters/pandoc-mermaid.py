@@ -4,15 +4,15 @@ Pandoc filter for Mermaid PDF images to \\includegraphics.
 Handles {.mermaid width=0.8\\textwidth center=true}, robust and debug-heavy.
 """
 
-import os
-import sys
-import subprocess
 import hashlib
+import os
 import shutil
-from typing import Optional, List
+import subprocess
+import sys
+from typing import List, Optional
 
-from pandocfilters import toJSONFilter, RawBlock
-from pandocfilters import get_filename4code, get_caption
+from pandocfilters import (RawBlock, get_caption, get_filename4code,
+                           toJSONFilter)
 
 # Define options first
 MMDC_OPTIONS = {
@@ -112,7 +112,7 @@ def mermaid(key: str, value: List, format_: str, meta: dict) -> Optional[dict]:
             except subprocess.CalledProcessError as e:
                 sys.stderr.write(f"Error generating {pdf_dest}: Return code {e.returncode}\n")
                 sys.stderr.write(f"Stdout: {e.stdout}\nStderr: {e.stderr}\n")
-                return RawBlock('latex', f"\\textbf{{Mermaid error: {e.stderr.replace('$', '\\$')}}}")
+                return RawBlock('latex', "\\textbf{{Mermaid error: {}}}".format(e.stderr.replace('$', '\\$')))
             finally:
                 if os.path.isfile(src):
                     os.remove(src)
