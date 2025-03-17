@@ -125,7 +125,7 @@ The system supports diagrams created with Mermaid. Below are some examples.
 
 ## Flowchart
 
-```mermaid
+```{.mermaid width="0.8\\textwidth" center=true}
 graph TD
     A[Start] --> B{Input Valid?}
     B -->|Yes| C[Process Input]

@@ -2,6 +2,7 @@
 \usepackage[letterpaper, top=0.5in, bottom=1in, left=1in, right=1in, includeheadfoot]{geometry}
 \usepackage{caption} % Add caption package
 \usepackage{subcaption}
+\usepackage{svg}
 \usepackage{array}
 \usepackage{titlesec}
 \usepackage{enumitem}

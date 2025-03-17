@@ -69,7 +69,6 @@ check_system_deps() {
     "npm:npm:npm:npm"
     "jq:jq:jq:jq"
   )
-
   if is_docker; then
     local missing=()
     for dep in "${deps[@]}"; do
